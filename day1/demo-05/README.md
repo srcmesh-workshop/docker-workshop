@@ -29,7 +29,7 @@ container-name: 請使用 `<username>-<random-string>`
 
 - Step 2:
 
-websrv:demo5 中有 curl 指令:
+websrv:demo4 中有 curl 指令:
 
 ```bash
 docker container run -d --name <container-name> \
