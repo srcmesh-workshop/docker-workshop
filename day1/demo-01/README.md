@@ -13,8 +13,10 @@ mkdir config
 3. docker 指令 + volume 掛載
 
 ```bash
-docker container run -dit -v $(pwd)/config:/app/config alpine
+docker container run --name <container-name> -dit -v $(pwd)/config:/app/config alpine
 ```
+
+* container-name: 請使用 <username>-<random-string>
 
 4. exec 進到容器內確認是否有成功掛載
 
