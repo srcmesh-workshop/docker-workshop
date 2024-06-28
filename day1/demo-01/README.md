@@ -22,7 +22,7 @@ docker container run --name <container-name> -dit -v $(pwd)/config:/app/config a
 
 ```bash
 docker container ls
-docker container exec -it {container id} ash
+docker container exec -it <container-name> ash
 ```
 
 5. 容器內修改檔案
