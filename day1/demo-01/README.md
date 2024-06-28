@@ -16,7 +16,7 @@ mkdir config
 docker container run --name <container-name> -dit -v $(pwd)/config:/app/config alpine
 ```
 
-* container-name: 請使用 <username>-<random-string>
+* container-name: 請使用 `<username>-<random-string>`
 
 4. exec 進到容器內確認是否有成功掛載
 
