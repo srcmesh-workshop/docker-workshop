@@ -17,7 +17,7 @@ docker image build -t websrv:demo6.2 .
 container-name: 請使用 `<username>-<random-string>`
 
 ```bash
-$ docker container run --name <container-name> -d websrv:demo4
+$ docker container run --name <container-name> -d websrv:demo6.1
 22ebca71fedc0abcff150723746dc317c898eb87d06adbc2d14c8c4f521a8ebf
 
 $ time docker container stop <container-name>
