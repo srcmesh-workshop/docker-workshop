@@ -1,0 +1,14 @@
+# 建構階段
+FROM golang:1.21.3 AS builder
+WORKDIR /opt/app
+COPY . .
+## 編譯程式
+RUN go mod init main && go build -o main
+
+# 運行階段
+FROM alpine:latest
+LABEL maintainer="srcmesh"
+WORKDIR /opt/app
+## 將編譯好的可執行檔複從建構階段複製到這個階段
+COPY --from=builder /opt/app/main ./main
+CMD ["./main"]

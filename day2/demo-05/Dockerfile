@@ -1,0 +1,6 @@
+ARG BASE_IMAGE_NAME=openjdk
+ARG BASE_IMAGE_TAG=23-jdk-slim
+
+FROM ${BASE_IMAGE_NAME}:${BASE_IMAGE_TAG}
+
+CMD ["java", "-version"]

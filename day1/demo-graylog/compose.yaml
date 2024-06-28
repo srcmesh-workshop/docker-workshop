@@ -1,0 +1,62 @@
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    networks:
+      - graylog
+    restart: unless-stopped
+
+  opensearch:
+    image: opensearchproject/opensearch:2.4.1
+    container_name: opensearch
+    environment:
+      - 'discovery.type=single-node'
+      - 'OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g'
+      - 'bootstrap.memory_lock=true'
+      - 'action.auto_create_index=false'
+      - 'plugins.security.ssl.http.enabled=false'
+      - 'plugins.security.disabled=true'
+    networks:
+      - graylog
+    restart: unless-stopped
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+
+  graylog:
+    image: graylog/graylog:6.0
+    container_name: graylog
+    environment:
+      GRAYLOG_PASSWORD_SECRET: 'somepasswordpepper'
+      # password: admin
+      GRAYLOG_ROOT_PASSWORD_SHA2: '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'
+      GRAYLOG_HTTP_BIND_ADDRESS: '0.0.0.0:9000'
+      GRAYLOG_HTTP_EXTERNAL_URI: 'http://localhost:9000/'
+      GRAYLOG_ELASTICSEARCH_HOSTS: 'http://opensearch:9200'
+      GRAYLOG_MONGODB_URI: 'mongodb://mongo:27017/graylog'
+      # 如果要測試 mail notification 功能，請將以下註解移除
+      #GRAYLOG_TRANSPORT_EMAIL_ENABLED: "true"
+      #GRAYLOG_TRANSPORT_EMAIL_HOSTNAME: "smtp.gmail.com"
+      #GRAYLOG_TRANSPORT_EMAIL_PORT: "587"
+      #GRAYLOG_TRANSPORT_EMAIL_USE_AUTH: "true"
+      #GRAYLOG_TRANSPORT_EMAIL_AUTH_USERNAME: "your gmail"
+      #GRAYLOG_TRANSPORT_EMAIL_AUTH_PASSWORD: "your password"
+      #GRAYLOG_TRANSPORT_EMAIL_USE_TLS: "true"
+      #GRAYLOG_TRANSPORT_EMAIL_USE_SSL: "false"
+      #GRAYLOG_TRANSPORT_EMAIL_FROM_EMAIL: "Your gmail"
+    entrypoint: /usr/bin/tini -- wait-for-it opensearch:9200 -- /docker-entrypoint.sh
+    networks:
+      - graylog
+    depends_on:
+      - mongo
+      - opensearch
+    ports:
+      - '9000:9000' # Graylog web interface and REST API
+      - '12201:12201/tcp' # GELF
+      - '12201:12201/udp' # GELF
+      - '1514:1514/tcp' # Syslog
+    restart: unless-stopped
+
+networks:
+  graylog:
