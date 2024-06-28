@@ -41,6 +41,8 @@ docker container run --rm -i hadolint/hadolint < Dockerfile
 
 - 執行簡構出來的映像檔，執行成功後會看到 Hello, World!
 
+container-name: 請使用 `<username>-<random-string>`
+
 ```bash
-docker container run --rm -it {image 名稱}
+docker container run --name <container-name> --rm -it {image 名稱}
 ```

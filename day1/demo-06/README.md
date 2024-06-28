@@ -14,11 +14,13 @@ docker image build -t websrv:demo6.2 .
 
 - Step 1:
 
+container-name: 請使用 `<username>-<random-string>`
+
 ```bash
-$ docker container run -d --name demo6.1 websrv:demo4
+$ docker container run --name <container-name> -d websrv:demo4
 22ebca71fedc0abcff150723746dc317c898eb87d06adbc2d14c8c4f521a8ebf
 
-$ time docker container stop demo6.1
+$ time docker container stop <container-name>
 demo6.1
 
 real 0m0.193s
@@ -26,15 +28,29 @@ user 0m0.014s
 sys 0m0.017s
 ```
 
-- Step 3:
+實驗完成後，刪除容器
 
 ```bash
-$ docker container run -d --name demo6.2 websrv:demo6.2
+docker container rm <container-name>
+```
+
+- Step 3:
+
+container-name: 請使用 `<username>-<random-string>`
+
+```bash
+$ docker container run --name <container-name> -d websrv:demo6.2
 8c61ac126d7fb86804d02d9bcc236f0b9900ae376676a7269af4936e0d6270a9
-$ time docker container stop demo6.2
+$ time docker container stop <container-name>
 demo6.2
 
 real 0m10.204s
 user 0m0.010s
 sys 0m0.017s
+```
+
+實驗完成後，刪除容器
+
+```bash
+docker container rm <container-name>
 ```

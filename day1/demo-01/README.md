@@ -16,7 +16,7 @@ mkdir config
 docker container run --name <container-name> -dit -v $(pwd)/config:/app/config alpine
 ```
 
-* container-name: 請使用 `<username>-<random-string>`
+- container-name: 請使用 `<username>-<random-string>`
 
 4. exec 進到容器內確認是否有成功掛載
 
@@ -33,3 +33,10 @@ apk add vim
 ```
 
 6. 離開容器，並確認檔案是否成功修正
+
+7. 實驗完成後，刪除容器
+
+```bash
+docker container stop <container-name>
+docker container rm <container-name>
+```

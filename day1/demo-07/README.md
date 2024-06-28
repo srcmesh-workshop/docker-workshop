@@ -13,17 +13,17 @@ docker image build -t websrv:demo7.2 -f Dockerfile.2 .
 - Step 1:
 
 ```bash
-$ docker container run -d --rm websrv:demo7.1
+$ docker container run --name <container-name> -d --rm websrv:demo7.1
 
 $ docker container ls
 
-$ docker container exec -it {container id} bash
+$ docker container exec -it <container-name> bash
 
 > ps aux
 
 # 可以發現 PID 1 的 process 是 sh
 
-$ time docker container stop {container id}
+$ time docker container stop <container-name>
 
 # 需要等待 10 秒中
 ```
@@ -31,17 +31,17 @@ $ time docker container stop {container id}
 - Step 2:
 
 ```bash
-$ docker container run -d --rm websrv:demo7.2
+$ docker container run --name <container-name> -d --rm websrv:demo7.2
 
 $ docker container ls
 
-$ docker container exec -it {container id} bash
+$ docker container exec -it <container-name> bash
 
 > ps aux
 
 # 可以發現 PID 1 的 process 是 nginx
 
-$ time docker container stop {container id}
+$ time docker container stop <container-name>
 
 # 不需要等待 10 秒中
 ```

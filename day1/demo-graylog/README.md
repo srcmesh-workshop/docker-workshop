@@ -16,10 +16,17 @@ admin/admin
 - Run container to send logs to Graylog
 
 ```bash
-docker container run -d \
+docker container run --name <container-name> -d \
   --log-driver=gelf \
   --log-opt gelf-address=udp://127.0.0.1:12201 \
   --log-opt tag="myweb" \
   -p 5566:80 \
   nginx:alpine
+```
+
+實驗完成後，刪除容器
+
+```bash
+docker container stop <container-name>
+docker container rm
 ```
