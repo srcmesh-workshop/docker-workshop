@@ -31,6 +31,8 @@ docker container ls
 
 ## 實作 2
 
+請將實作 1 的指令變成 compose.yaml
+
 ```
 version: '3.8'
 
