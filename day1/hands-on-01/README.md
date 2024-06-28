@@ -12,7 +12,7 @@
 
 - 請用 nginx:alpine image 啟動一個 container，以下目標：
   - 利用 bind mounts 的方式將自己的首頁掛載進去
-  - 利用 port mapping 的方式，讓 host 的 port # 可以映射到 nginx 的 80
+  - 利用 port mapping 的方式，讓 host 的 port 可以映射到 nginx 的 80 (Port 號以使用者 ID 數字作尾數 100xx)
   - 設定 health check，以確定服務運行正常
     - `--health-cmd`: 健康檢查命令，注意: 該命令須存在於 container 裡 (`curl -f http://localhost:8080 || exit 1`)
     - `--health-start-period`: 啟動健康檢查的等待時間
