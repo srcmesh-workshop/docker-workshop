@@ -6,19 +6,18 @@
   - index.html
   - default.conf
 
-## 需求
-
+## 實作 1
 
 - 請用 nginx:alpine image 啟動一個 container，以下目標：
   - 利用 bind mounts 的方式將自己的首頁掛載進去
   - 利用 port mapping 的方式，讓 host 的 port # 可以映射到 nginx 的 80
   - 設定 health check，以確定服務運行正常
-    - `--health-cmd`: 健康檢查命令，注意: 該命令須存在於 container 裡
+    - `--health-cmd`: 健康檢查命令，注意: 該命令須存在於 container 裡 (`curl -f http://localhost:8080 || exit 1`)
     - `--health-start-period`: 啟動健康檢查的等待時間
     - `--health-interval`: 健康檢查命令的間隔時間
     - `--health-timeout`: 健康檢查命令的超時時間
     - `--health-retries`: 健康檢查命令失敗的重試次數
-  - 進階: 建立自己的設定檔，將 Nginx 預設的 port # 80 換成 8080
+  - 進階: 建立自己的設定檔，將 Nginx 預設的 port 80 換成 8080
 
 ## 驗證方式
 
@@ -26,4 +25,24 @@
 curl localhost:{mapping 到 host 的 port#}
 docker container ls
 # 檢查 STATUS 欄位是否為 healthy
+```
+
+## 實作 2
+
+```
+version: '3.8'
+
+services:
+  nginx:
+    image: <image>
+    ports:
+      - '<port>:<container-port>'
+    volumes:
+      - <file>:<filepath in container>
+    healthcheck:
+      test: ['CMD-SHELL', 'test command']
+      start_period: 1s
+      interval: 1s
+      timeout: 1s
+      retries: 1
 ```
