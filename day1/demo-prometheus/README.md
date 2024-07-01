@@ -8,13 +8,13 @@ docker compose up -d
 
 - Step 2: 登入 Grafana 管理介面
   http://{IP}:3000
-  帳號/密碼: admin / admin
+  帳號/密碼: admin / srcmesh-1234
 
 - Step 3: 新噌 Data source
 
 Prometheus server URL: http://prometheus:9090
 
 - Step 4: Import Dashboard
-
+  i
   - cAdvisor Dashboard 14282
   - node exporter Dashboard 1860

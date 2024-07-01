@@ -9,7 +9,7 @@ docker compose up -d
 Graylog UI
 
 http://{ip}:9000
-admin/admin
+admin/srcmesh-1234
 
 - Create Inputs
 
