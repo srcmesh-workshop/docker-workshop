@@ -17,6 +17,8 @@ admin/admin
 
 ```bash
 docker container run --name <container-name> -d \
+  --label "com.docker.compose.service=webserver" \
+  --label "com.docker.compose.project=srcmesh" \
   --log-driver=gelf \
   --log-opt gelf-address=udp://127.0.0.1:12201 \
   --log-opt tag="myweb" \
