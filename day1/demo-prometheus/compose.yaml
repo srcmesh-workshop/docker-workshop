@@ -2,6 +2,7 @@ services:
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
+    restart: unless-stopped
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
@@ -13,23 +14,25 @@ services:
     container_name: grafana
     ports:
       - '3000:3000'
+    restart: unless-stopped
     volumes:
       - grafana_data:/var/lib/grafana
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
-      - GF_SMTP_ENABLED=true
-      - GF_SMTP_HOST=smtp.gmail.com:587
-      - GF_SMTP_USER={your email}
-      - GF_SMTP_PASSWORD={your password}
-      - GF_SMTP_SKIP_VERIFY=true
-      - GF_SMTP_FROM_ADDRESS={your email}
-      - GF_SMTP_FROM_NAME={your name}
+      - GF_SECURITY_ADMIN_PASSWORD=srcmesh-1234
+      #- GF_SMTP_ENABLED=true
+      #- GF_SMTP_HOST=smtp.gmail.com:587
+      #- GF_SMTP_USER={your email}
+      #- GF_SMTP_PASSWORD={your password}
+      #- GF_SMTP_SKIP_VERIFY=true
+      #- GF_SMTP_FROM_ADDRESS={your email}
+      #- GF_SMTP_FROM_NAME={your name}
 
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
     container_name: cadvisor
     ports:
       - '8080:8080'
+    restart: unless-stopped
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
@@ -41,6 +44,7 @@ services:
     container_name: node_exporter
     ports:
       - '9100:9100'
+    restart: unless-stopped
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
