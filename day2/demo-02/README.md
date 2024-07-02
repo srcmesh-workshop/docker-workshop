@@ -1,5 +1,7 @@
 # 映像檔大小最佳化: 技巧 3 合併 RUN 指令
 
+![image](./demo2.png)
+
 - Step 1: 用以下指令建構 image
 
 ```bash
