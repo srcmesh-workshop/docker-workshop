@@ -15,7 +15,7 @@ CMD ["java", "-version"]
 
 ```bash
 docker image build -t lab:5.1 .
-docker image build -t lab:5.2 --build-arg BASE_IMAGE_VERSION=24-jdk-slim .
+docker image build -t lab:5.2 --build-arg BASE_IMAGE_TAG=24-jdk-slim .
 ```
 
 - Step 2: 測試結果
