@@ -1,5 +1,7 @@
 # 映像檔大小最佳化: 技巧 2 善用 Cache 機制
 
+![image](demo1.png)
+
 - Step 1: 用以下指令建構 image，觀察建構過程
 
 ```bash
