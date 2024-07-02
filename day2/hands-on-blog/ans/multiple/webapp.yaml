@@ -1,0 +1,19 @@
+services:
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: exampleuser
+      WORDPRESS_DB_PASSWORD: examplepass
+      WORDPRESS_DB_NAME: exampledb
+    logging:
+      driver: gelf
+      options:
+        gelf-address: udp://127.0.0.1:12201
+    healthcheck:
+      test:
+        ['CMD-SHELL', 'curl -f http://localhost/wp-admin/install.php || exit 1']
+      interval: 30s
+      timeout: 10s
+      retries: 3

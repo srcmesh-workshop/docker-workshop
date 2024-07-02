@@ -1,0 +1,25 @@
+services:
+  nginx:
+    extends:
+      file: proxy.yaml
+      service: nginx
+    depends_on:
+      - wordpress
+    restart: unless-stopped
+
+  wordpress:
+    extends:
+      file: webapp.yaml
+      service: wordpress
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    extends:
+      file: db.yaml
+      service: db
+    restart: unless-stopped
+
+volumes:
+  db_data:
