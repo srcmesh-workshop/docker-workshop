@@ -82,6 +82,8 @@ http {
    - `--cpus` 與 `--memory` 限制
    - 健康檢查機制
      - 請思考如何偵測 Nginx、Wordpress、MySQL 是否正常運作
+     - Nginx, Wordpress: `curl -f http://localhost:80`
+     - MySQL: `mysqladmin ping -h localhost -u root --password=examplepass`
    - 思考 Container 之間的依賴關係怎麼設定
 
 4. 為 Container 增加以下設定
@@ -92,6 +94,61 @@ http {
 5. 當完成後，你應該要能夠:
    - 使用 port mapping 看到透過 nginx 看到 wordpress 畫面，並且能正常儲存 blog 文章
    - 在 Graylog 看到 Container 的 log
+
+## Docker Compose 範例
+
+```
+services:
+  foobar:
+    image: foobar:latest
+    container_name: foobar
+    volumes:
+      - ./xxxxx.conf:/some/path/zzzz.conf
+    ports:
+      - 'xxxx:yyyy'
+    depends_on:
+      - foo
+    healthcheck:
+      test: ['CMD-SHELL', 'curl -f http://localhost || exit 1']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+  foo:
+    image: foo:8
+    container_name: db
+    environment:
+      ENV: VAL
+    volumes:
+      - <volume-name>:<mount-path>
+    restart: unless-stopped
+
+volumes:
+  <volume-name>:
+```
+
+Logging 與 Healthcheck 寫法
+
+```
+services:
+  foobar:
+    ....
+    logging:
+      driver: gelf
+      options:
+        gelf-address: udp://127.0.0.1:12201
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          '<health-check-command> || exit 1',
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+```
+
 
 ## 繳交方式
 
