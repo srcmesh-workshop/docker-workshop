@@ -11,4 +11,6 @@ docker image build -t lab:1.2 -f Dockerfile.2 .
 
 - Step 2: 修改 a.txt 後，再建構一次，觀察過程的差異
 
+---
+
 ![image](layers.png)

@@ -1,5 +1,16 @@
 # 映像檔大小最佳化: ARG
 
+Dockerfile:
+
+```dockerfile
+ARG BASE_IMAGE_NAME=openjdk
+ARG BASE_IMAGE_TAG=23-jdk-slim
+
+FROM ${BASE_IMAGE_NAME}:${BASE_IMAGE_TAG}
+
+CMD ["java", "-version"]
+```
+
 - Step 1: 使用不同的 ARG 值建構 image
 
 ```bash
