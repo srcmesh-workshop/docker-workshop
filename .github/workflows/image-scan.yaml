@@ -47,4 +47,5 @@ jobs:
         run: |
           cd .cache/ans/single
           docker compose up  -d
+          docker ps -a | grep hansJ
         shell: bash
