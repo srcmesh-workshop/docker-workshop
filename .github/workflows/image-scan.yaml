@@ -9,7 +9,7 @@ name: Docker Image Scan
 jobs:
   scan:
     name: Scan Docker Image
-    runs-on: ubuntu-latest
+    runs-on: [runner-1, self-hosted]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
