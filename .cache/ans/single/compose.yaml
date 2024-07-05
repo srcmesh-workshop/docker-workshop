@@ -5,7 +5,7 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
-      - '12345:80'
+      - '8013:80'
     depends_on:
       - wordpress
     logging:
