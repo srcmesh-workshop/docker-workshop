@@ -49,5 +49,10 @@ jobs:
           severity: 'CRITICAL,HIGH'
       - name: docker test
         run: |
-          docker ps
+          cd .cache/ans/single
+          docker compose up -d 
+        shell: bash
+      - name: docker test
+        run: |
+          docker ps | grep hokutochi
         shell: bash
