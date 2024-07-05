@@ -19,9 +19,6 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@v3
-
-      
-
       ### https://github.com/aquasecurity/trivy-action?tab=readme-ov-file#inputs
       - name: Nginx
         uses: aquasecurity/trivy-action@master
@@ -31,7 +28,7 @@ jobs:
           exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH
+          severity: 'CRITICAL,HIGH'
 
       - name: Wordpress
         uses: aquasecurity/trivy-action@master
