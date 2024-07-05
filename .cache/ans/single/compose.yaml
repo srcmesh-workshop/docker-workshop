@@ -43,7 +43,7 @@ services:
 
   db:
     image: mysql:8
-    container_name: user-db
+    container_name: user1-db
     environment:
       MYSQL_ROOT_PASSWORD: examplepass
       MYSQL_DATABASE: exampledb
