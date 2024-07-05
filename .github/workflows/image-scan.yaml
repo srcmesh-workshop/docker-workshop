@@ -9,13 +9,14 @@ on:
 jobs:
   scan:
     name: Scan Docker Image
+      #runs-on: [runner-2, self-hosted]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
       # https://github.com/aquasecurity/trivy-action?tab=readme-ov-file#inputs
-      - name: Run Trivy vulnerability scanner
+      - name: nginx
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'nginx:latest'
@@ -24,7 +25,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-      - name: Run Trivy vulnerability scanner
+      - name: wordpress
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'wordpress:latest'
@@ -33,7 +34,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-      - name: Run Trivy vulnerability scanner
+      - name: mysql
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'mysql:8'
@@ -42,3 +43,4 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+      - name:
