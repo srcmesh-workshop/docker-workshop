@@ -42,9 +42,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-       
       - name: Test
-        run:
-            cd .cache/ans/single
-            docker compose up -d
+        run: cd .cache/ans/single docker compose up -d
         shell: bash
+
