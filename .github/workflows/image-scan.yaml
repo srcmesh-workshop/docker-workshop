@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
 
       # https://github.com/aquasecurity/trivy-action?tab=readme-ov-file#inputs
-      - name: Run Trivy vulnerability scanner
+      - name: Nginx
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'nginx:latest'
@@ -24,7 +24,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-      - name: Run Trivy vulnerability scanner
+      - name: Wordpress
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'wordpress:latest'
@@ -33,7 +33,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-      - name: Run Trivy vulnerability scanner
+      - name: Mysql
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'mysql:8'
