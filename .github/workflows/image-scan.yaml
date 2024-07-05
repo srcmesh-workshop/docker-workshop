@@ -44,6 +44,6 @@ jobs:
           severity: 'CRITICAL,HIGH'
       - name: Test
         run: |
-          cd ./.cache/ans/single
+          cd .cache/ans/single
           docker compose up -d
         shell: bash
