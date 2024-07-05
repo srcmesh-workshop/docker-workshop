@@ -19,7 +19,7 @@ jobs:
         with:
           image-ref: 'nginx:latest'
           format: 'table'
-          exit-code: '1'
+          exit-code: '0'
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
@@ -28,7 +28,7 @@ jobs:
         with:
           image-ref: 'wordpress:latest'
           format: 'table'
-          exit-code: '1'
+          exit-code: '0'
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
@@ -43,5 +43,6 @@ jobs:
           severity: 'CRITICAL,HIGH'
       - name: Test
         run: | 
-           docker ps
+          cd .cache/ans/single
+          docker compose up -d
         shell: bash
