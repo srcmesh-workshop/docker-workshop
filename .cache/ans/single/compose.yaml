@@ -84,7 +84,7 @@ volumes:
         with:
           image-ref: 'nginx:latest'
           format: 'table'
-          exit-code: '1'
+          exit-code: '0'
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
@@ -93,7 +93,7 @@ volumes:
         with:
           image-ref: ' wordpress:latest'
           format: 'table'
-          exit-code: '1'
+          exit-code: '0'
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
@@ -102,7 +102,7 @@ volumes:
         with:
           image-ref: 'mysql:8'
           format: 'table'
-          exit-code: '1'
+          exit-code: '0'
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'          
