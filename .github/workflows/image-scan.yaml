@@ -9,7 +9,9 @@ name: Docker Image Scan
 jobs:
   scan:
     name: Scan Docker Image
-    runs-on: [runner-1, self-hosted]
+    runs-on:
+      - runner-1
+      - self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -40,4 +42,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+      - name: Test
+        run: docker run
+        shell: bash
 
