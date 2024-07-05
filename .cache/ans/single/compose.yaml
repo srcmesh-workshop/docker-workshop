@@ -1,7 +1,7 @@
 services:
   nginx:
     image: nginx:latest
-    container_name: nginx
+    container_name: user-6-host-1-nginx
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
@@ -21,7 +21,7 @@ services:
 
   wordpress:
     image: wordpress:latest
-    container_name: wordpress
+    container_name: user-6-host-1-wordpress
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: exampleuser
@@ -43,7 +43,7 @@ services:
 
   db:
     image: mysql:8
-    container_name: db
+    container_name: user-6-host-1-db
     environment:
       MYSQL_ROOT_PASSWORD: examplepass
       MYSQL_DATABASE: exampledb
@@ -68,41 +68,3 @@ services:
 
 volumes:
   db_data:
-  
- jobs:
-  scan:
-    name: Scan Docker Image
-    #runs-on: [runner-2, self-hosted]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-    ### https://github.com/aquasecurity/trivy-action?tab=readme-ov-file#inputs
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: 'nginx:latest'
-          format: 'table'
-          exit-code: '0'
-          ignore-unfixed: true
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
-       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: ' wordpress:latest'
-          format: 'table'
-          exit-code: '0'
-          ignore-unfixed: true
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
-       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: 'mysql:8'
-          format: 'table'
-          exit-code: '0'
-          ignore-unfixed: true
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'          

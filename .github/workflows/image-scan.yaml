@@ -45,5 +45,6 @@ jobs:
        
       - name: Test
         run:
-            docker ps
+            cd .cache/ans/single
+            docker compose up-d
         shell: bash
