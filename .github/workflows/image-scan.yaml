@@ -46,4 +46,4 @@ jobs:
       - name: Test
         run: 
           docker ps
-        shell:bash
+        shell: bash
