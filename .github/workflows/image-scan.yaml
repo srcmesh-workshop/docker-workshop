@@ -25,3 +25,30 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+      - name: wordpress
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'wordpress:latest'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+      - name: mysql8
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'mysql:8'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+      - name: nginx
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'nginx:latest'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
