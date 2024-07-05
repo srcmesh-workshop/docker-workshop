@@ -9,7 +9,7 @@ on:
 jobs:
   scan:
     name: Scan Docker Image
-      runs-on: [runner-3, self-hosted]
+    runs-on: [runner-3, self-hosted]
       #runs-on: 
     steps:
       - name: Checkout code
@@ -49,5 +49,5 @@ jobs:
 
       - name: Test
         run : |
-             docker ps
+         docker ps
         shell: bash
