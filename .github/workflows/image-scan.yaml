@@ -9,12 +9,12 @@ on:
 jobs:
   scan:
     name: Scan Docker Image
-      runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # https://github.com/aquasecurity/trivy-action?tab=readme-ov-file#inputs
+      ## https://github.com/aquasecurity/trivy-action?tab=readme-ov-file#inputs
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
