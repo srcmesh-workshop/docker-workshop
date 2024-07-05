@@ -9,7 +9,7 @@ name: Docker Image Scan
 jobs:
   scan:
     name: Scan Docker Image
-    runs-on: ubuntu-latest
+    runs-on: [runner-1,self-hosted]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -34,7 +34,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'mysql:8'
+          image-ref: 'mysql:latest'
           format: table
           exit-code: '0'
           ignore-unfixed: true
