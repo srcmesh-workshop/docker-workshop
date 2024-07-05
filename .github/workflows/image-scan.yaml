@@ -12,14 +12,32 @@ jobs:
       # runs-on: [runner-2, self-hosted]
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      #- name: Checkout code
+      #  uses: actions/checkout@v3
 
       # https://github.com/aquasecurity/trivy-action?tab=readme-ov-file#inputs
-      - name: Run Trivy vulnerability scanner
+      - name: scan mysql
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'mysql:oracle'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+      - name: scan wordpress
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'wordpress:latest'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+      - name: scan nginx
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'nginx:latest'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
