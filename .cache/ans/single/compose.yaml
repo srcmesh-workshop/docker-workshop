@@ -7,7 +7,7 @@ services:
     ports:
       - '12345:80'
     depends_on:
-      - wordpress-user05
+      - wordpress
     logging:
       driver: gelf
       options:
