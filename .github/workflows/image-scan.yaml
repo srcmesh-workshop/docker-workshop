@@ -49,7 +49,7 @@ jobs:
 
       - name: TEST
         run: |
-           cd .cache/ans/single/compose.yaml
+           cd .cache/ans/single/
            docker compose up -d
         shell: bash
         
