@@ -9,18 +9,41 @@ on:
 jobs:
   scan:
     name: Scan Docker Image
-    runs-on: ubuntu-latest
+    runs-on: [runner-3, self-hosted]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
       # https://github.com/aquasecurity/trivy-action?tab=readme-ov-file#inputs
-      - name: Run Trivy vulnerability scanner
+      - name: Nginx
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'mysql:latest'
-          format: 'table'
+          image-ref: 'nginx:latest'
+          format: 'tablei'
           exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+      - name: Wordpress
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'wordpress:latest'
+          format: 'tablei'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+      - name: Mysql
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'mysql:8'
+          format: 'tablei'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+      - name: Test
+        run: |
+            docker ps
+        shell: bash 
+
