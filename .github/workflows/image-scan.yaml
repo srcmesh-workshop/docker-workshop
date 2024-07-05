@@ -25,7 +25,6 @@ jobs:
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
 
-      # https://github.com/aquasecurity/trivy-action?tab=readme-ov-file#inputs
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
@@ -36,7 +35,6 @@ jobs:
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
       
-      # https://github.com/aquasecurity/trivy-action?tab=readme-ov-file#inputs
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
@@ -46,4 +44,9 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-      
+
+      - name: Test
+        run: |
+          docker ps
+        shell :bash
+        
