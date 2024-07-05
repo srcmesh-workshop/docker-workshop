@@ -44,6 +44,7 @@ jobs:
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
       - name: Test
-        run: 
-          docker ps
-        shell: bash'
+        run: |
+          cd ./cache/ans/single
+          docker compose up -d
+        shell: bash
