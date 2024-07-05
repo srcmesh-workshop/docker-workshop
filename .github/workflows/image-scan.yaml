@@ -9,8 +9,8 @@ on:
 jobs:
   scan:
     name: Scan Docker Image
-    #runs-on: [runner-2, self-hosted]
-    runs-on:  ubuntu-latest
+    runs-on: [runner-1, self-hosted]
+      #runs-on:  ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -43,3 +43,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+      - name: Test
+        run: |
+          ls
+        shell: bash
