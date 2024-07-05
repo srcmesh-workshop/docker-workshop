@@ -10,7 +10,7 @@ jobs:
   scan:
     name: Scan Docker Image
     # runs-on: [runner-2, self-hosted]
-    runs-on: ubunut-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Test
         run: |
