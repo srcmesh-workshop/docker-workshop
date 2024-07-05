@@ -12,6 +12,11 @@ jobs:
     runs-on: [runner-2, self-hosted]
       #runs-on: ubuntu-latest
     steps:
+      - name: Test
+        run: |
+          ls
+        shell: bash
+
       - name: Checkout code
         uses: actions/checkout@v3
 
