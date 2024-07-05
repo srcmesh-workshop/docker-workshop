@@ -43,6 +43,6 @@ jobs:
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
        - name: Test
-         run: 
+         run: | 
            docker ps
          shell: bash
