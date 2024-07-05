@@ -19,7 +19,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'nginx:latest'
-          format: 'tablei'
+          format: 'table'
           exit-code: '0'
           ignore-unfixed: true
           vuln-type: 'os,library'
@@ -28,7 +28,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'wordpress:latest'
-          format: 'tablei'
+          format: 'table'
           exit-code: '0'
           ignore-unfixed: true
           vuln-type: 'os,library'
@@ -37,7 +37,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'mysql:8'
-          format: 'tablei'
+          format: 'table'
           exit-code: '0'
           ignore-unfixed: true
           vuln-type: 'os,library'
